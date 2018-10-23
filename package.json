@@ -1,0 +1,23 @@
+{
+  "name": "bfv4-sample",
+  "version": "1.0.0",
+  "description": "MS Bot Framework version 4 sample",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valerii-Poliakov/BFv4-sample.git"
+  },
+  "author": "Valerii Poliakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valerii-Poliakov/BFv4-sample/issues"
+  },
+  "homepage": "https://github.com/Valerii-Poliakov/BFv4-sample#readme",
+  "dependencies": {
+    "botbuilder": "^4.0.8",
+    "restify": "^7.2.1"
+  }
+}
