@@ -1,23 +1,25 @@
 {
-  "name": "bfv4-sample",
+  "name": "proxy-bot",
   "version": "1.0.0",
-  "description": "MS Bot Framework version 4 sample",
-  "main": "bot.js",
+  "description": "Bot forwards incoming message to all subscribers.",
+  "main": "index.js",
   "scripts": {
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Valerii-Poliakov/BFv4-sample.git"
+    "url": "git+https://github.com/Valerii-Poliakov/proxy-bot.git"
   },
   "author": "Valerii Poliakov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Valerii-Poliakov/BFv4-sample/issues"
+    "url": "https://github.com/Valerii-Poliakov/proxy-bot/issues"
   },
-  "homepage": "https://github.com/Valerii-Poliakov/BFv4-sample#readme",
+  "homepage": "https://github.com/Valerii-Poliakov/proxy-bot#readme",
   "dependencies": {
     "botbuilder": "^4.6.1",
+    "dotenv": "^8.2.0",
     "restify": "^8.4.0"
   }
 }

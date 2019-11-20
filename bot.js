@@ -1,30 +1,30 @@
-const restify = require('restify');
-const botbuilder = require('botbuilder');
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-// Create bot adapter, which defines how the bot sends and receives messages.
-let adapter = new botbuilder.BotFrameworkAdapter({
-    appId: process.env.MicrosoftAppId,
-    appPassword: process.env.MicrosoftAppPassword
-});
+const { ActivityHandler } = require('botbuilder');
 
-// Create HTTP server.
-let server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3984, function () {
-    console.log(`\n${server.name} listening to ${server.url}`);
-    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
-});
+class MyBot extends ActivityHandler {
+    constructor() {
+        super();
+        // See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
+        this.onMessage(async (context, next) => {
+            let channelId = context.activity.channelId;
+            await context.sendActivity(`You said '${ context.activity.text }'`);
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
 
-// Listen for incoming requests at /api/messages.
-server.post('/api/messages', (req, res) => {
-    // Use the adapter to process the incoming web request into a TurnContext object.
-    adapter.processActivity(req, res, async (turnContext) => {
-        // Do something with this incoming activity!
-        if (turnContext.activity.type === 'message') {
-            // Get the user's text
-            const utterance = turnContext.activity.text;
+        this.onMembersAdded(async (context, next) => {
+            const membersAdded = context.activity.membersAdded;
+            for (let cnt = 0; cnt < membersAdded.length; ++cnt) {
+                if (membersAdded[cnt].id !== context.activity.recipient.id) {
+                    await context.sendActivity(`Hello and welcome! Send 'subscribe' to start receiving notifications.`);
+                }
+            }
+            // By calling next() you ensure that the next BotHandler is run.
+            await next();
+        });
+    }
+}
 
-            // send a reply
-            await turnContext.sendActivity(`I heard you say ${ utterance }`);
-        }
-    });
-});
+module.exports.MyBot = MyBot;
