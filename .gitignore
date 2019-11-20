@@ -36,7 +36,7 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Typescript v1 declaration files
+# TypeScript v1 declaration files
 typings/
 
 # Optional npm cache directory
@@ -50,7 +50,6 @@ typings/
 
 # Output of 'npm pack'
 *.tgz
-*.zip
 
 # Yarn Integrity file
 .yarn-integrity
@@ -58,12 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
-# Webstorm files
+# next.js build output
+.next
+
+# webstorm
 .idea/
-
-# Other
-.DS_Store
-.vscode/
-
-elastic/dataset/*
-elastic/knowledgebase/*

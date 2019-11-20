@@ -18,6 +18,6 @@
   "homepage": "https://github.com/Valerii-Poliakov/BFv4-sample#readme",
   "dependencies": {
     "botbuilder": "^4.0.8",
-    "restify": "^7.2.1"
+    "restify": "^8.4.0"
   }
 }
